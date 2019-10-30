@@ -1,0 +1,10 @@
+<?php
+
+define('DB_USER', 'username');
+define('DB_PASS', 'password');
+define('DB_HOST', 'localhost');
+define('DB_PORT', '6379');
+define('DB_NAME', 'eway-crm');
+define('EWAY-USER', 'username');
+define('EWAY-PASS', 'password');
+define('EWAY-URL', 'https://free.eway-crm.com/34491');
