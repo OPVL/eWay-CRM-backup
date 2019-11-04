@@ -13,8 +13,8 @@
     <nav class="mat-shad">
         <h3 id="appname">eWay Backup-er</h3>
         <ul>
-            <li <?php if ($_SERVER['REQUEST_URI'] == '/') echo 'class="active"';?>><a class="navlink" href="http://">Dashboard</a></li>
-            <li <?php if (strstr($_SERVER['REQUEST_URI'], 'search')) echo 'class="active"';?>><a class="navlink" href="http://">Search</a></li>
-            <li><a class="navlink" href="http://">Manage</a></li>
+            <li <?php if ($_SERVER['REQUEST_URI'] == '/') echo 'class="active"';?>><a class="navlink" href="/">Dashboard</a></li>
+            <li <?php if (strstr($_SERVER['REQUEST_URI'], 'search')) echo 'class="active"';?>><a class="navlink" href="/search">Search</a></li>
+            <li><a class="navlink" href="/settings">Manage</a></li>
         </ul>
     </nav>

@@ -20,7 +20,7 @@ if ($db->errno) {
 $dbg[] = 'Database Connection established';
 
 try {
-    $dbg[] = "Authenticating with eWay: $EWAY_URL, $EWAY_USER, $EWAY_PASS";
+    $dbg[] = "Authenticating with eWay: $EWAY_URL, $EWAY_USER, ".md5($EWAY_PASS);
     $dbg[] = "Getting Companies from eWay";
     $companies = $eway->getCompanies();
     $dbg[] = "Getting Contacts from eWay";
