@@ -2,7 +2,8 @@
 <?php
 require_once 'config.php';
 require_once 'php-lib-2.1/eway.class.php';
-
+header('Content-Type: application/json');
+$start = time();
 $contacts;
 $companies;
 $dbg = [];
@@ -20,7 +21,7 @@ if ($db->errno) {
 $dbg[] = 'Database Connection established';
 
 try {
-    $dbg[] = "Authenticating with eWay: $EWAY_URL, $EWAY_USER, ".md5($EWAY_PASS);
+    $dbg[] = "Authenticating with eWay: $EWAY_URL, $EWAY_USER, " . md5($EWAY_PASS);
     $dbg[] = "Getting Companies from eWay";
     $companies = $eway->getCompanies();
     $dbg[] = "Getting Contacts from eWay";
@@ -47,9 +48,11 @@ if ($DEBUG) {
 $now = gmdate("Y-m-d\TH:i:s", time());
 $filename = "storage/eway-backup-$now.json";
 $file = fopen($filename, "a");
-fwrite($file, json_encode($backup));
+$write = fwrite($file, json_encode($backup));
 fclose($file);
 
-exit(json_encode($backup));
-
+exit(json_encode(
+    $write ?
+        ['msg' => 'Success! Backup saved. Took ' . (string)(time() - $start) . 's'] : ['error' => 'Unable to save or 0 Bytes written. Please try again.']
+));
 ?>
